@@ -18,6 +18,23 @@
     </head>
 
 <body>
+    
+     <h1>Irish Traditional Music at the AFC </h1>
+    <h2>- <a href="https://www.twitter.com/mrpatrickegan">Patrick Egan </a></h2>
+    
+    <p data-v-ad5fa5ec="" class="quotationBlock">Listening to multiple versions of an Irish folksong posted by many different fieldworkers over many different regions and years - and programatically denying priority to any single one - will go a long way toward providing a facsimile, eAccurate sense of the song's many-sided, irreducible character. eAccuracy is like a video continuously being shot and (re)-edited rather than a photograph filed in a shoebox. <span data-v-ad5fa5ec=""><a data-v-ad5fa5ec="" href="https://www.press.uillinois.edu/books/catalog/54xcf5ha9780252037184.html">Miles Foley</a>, 2012</span></p>
+    
+    <p data-v-ad5fa5ec="" class="quotationBlock">Oral Tradition and Internet - Despite superficial differences, both technologies are radically alike in depending not on static products but on continuous processes, not on "What?" but on "How do I get there?" In contrast to the fixed spatial organization of the page and book, the technologies of oral tradition and the internet mime the way we think by processing along pathways within a network. In both media it's path-ways-not things-that matter. <span data-v-ad5fa5ec=""><a data-v-ad5fa5ec="" href="https://www.press.uillinois.edu/books/catalog/54xcf5ha9780252037184.html">Miles Foley</a>, 2012</span></p>
+    
+ <p class="statement">As a Library of Congress Kluge Scholar in Digital Studies, I have begun diving into the collections of the American Folklife Center (AFC) at the Library. Some of my initial forays have been brought together and shared in this post. To date I have information to share on the following collections, forming a key part of several ongoing projects. For more information see my blog post.</p>
+
+<p class="statement">My first activity at the AFC was to survey their audio collections. I began this quest by asking the question: Where are the field recordings of Irish traditional music located in all collections across the Center? I wanted to explore common identifiers between tunes, songs and dances that were performed, collected and archived in a wide range of ways. How might performances and collecting have changed over the years, and what digital technologies might performers of Irish traditional music in North America now use to access and navigate these collections?</p>
+
+
+    <br />
+    
+    
+    
    
     <h1>US Map of Foreign Born Census Data / AFC Collections</h1>
 <div id="slider3"></div>
@@ -388,6 +405,7 @@ d3.csv("collections-data.csv", function(data) {
      
           data['years'] = +data['years']; 
          collYears = data.years;
+         position = data.pos;
          //console.log(collYears);
   });
     
@@ -419,11 +437,19 @@ d3.csv("collections-data.csv", function(data) {
     
    // Modification of custom tooltip code provided by Malcolm Maclean, "D3 Tips and Tricks" 
 	// http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
-	.on("mouseover", function(d) {      
+	.on("mouseover", function(data) {      
     	div.transition()        
-      	   .duration(200)      
-           .style("opacity", .9);      
-           div.text(d.place)
+      	   div.transition()
+            .duration(500)    
+            .style("opacity", 0);
+        div.transition()
+            .duration(200)    
+            .style("opacity", 1); 
+     var position = data.pos;
+     //console.log(position);
+    div.html('<a href="https://docs.google.com/spreadsheets/d/1uFuDhFjhWpbg_l5olpNldLOyjUbt3bedDNji_dJkrNI/edit#gid=2010025490&range='+position+'"' 
+             + '>' 
+             + data.place + '</a>' )
            .style("left", (d3.event.pageX) + "px")     
            .style("top", (d3.event.pageY - 28) + "px");    
 	})   
@@ -431,7 +457,7 @@ d3.csv("collections-data.csv", function(data) {
     // fade out tooltip on mouse out               
     .on("mouseout", function(d) {       
         div.transition()        
-           .duration(500)      
+           .duration(5000)      
            .style("opacity", 0);   
     });
 });   
@@ -466,9 +492,11 @@ d3.select('#slider3').call(d3.slider()
    
                            
                       
-);
+); 
          
 </script>
     <div id="explanation">*Historical census data for US foreign born by state, 1850-1950, 1980 www.census.gov. Note: Due to inconsistencies in the format of census data, the 1970 foreign born data includes excerpts for 5 states and estimates for the remaining. No foreign born data was available in aggregate for 1960 and thus estimates were used.</div>
+    
+    <div id="explanation2">I also visualized these performances by tune type and by showing <a href="https://rootseire.github.io/LC-ITM">pathways to the collections</a></div>
 </body>
 </html>
