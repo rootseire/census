@@ -155,11 +155,15 @@ svg = d3.select("#canvas-svg").append("svg")
   
   //d3.json("https://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(error, us) {
   d3.json("https://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(error, us) {
-    svg.append("g")
+    svg
+.append("g").attr("class", "zoomer")
+        .append("g")
         .attr("class", "states-choropleth")
       .selectAll("path")
-        .data(topojson.feature(us, us.objects.states).features)
-      .enter().append("path")
+      .data(topojson.feature(us, us.objects.states).features)
+      .enter()
+      .append("path")
+      .on("click", clicked)
       .attr("class", "pathstyle")
         //.attr("transform", "scale(" + SCALE + ")")
         .style("fill", function(d) {
@@ -232,6 +236,48 @@ svg = d3.select("#canvas-svg").append("svg")
         .attr("class", "states")
         .attr("transform", "scale(" + SCALE + ")")
         .attr("d", path);
+      
+      
+      //add zoom.....................................
+      function clicked(d) {
+          //removeMarks();
+  var x, y, k;
+var centered;
+  if (d && centered !== d) {
+    var centroid = path.centroid(d);
+    x = centroid[0];
+    y = centroid[1];
+    k = 4;
+      //console.log(d);
+    centered = d;
+  } else {
+    x = width / 2;
+    y = height / 2;
+    k = 1;
+    centered = null;
+  }
+
+  svg.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+var g = svg.selectAll(".zoomer");
+  g.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px");
+
+      //Now change the position of the markers
+      svg.selectAll("circle")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+     //Now change path with states class
+    svg.selectAll(".states")
+          //.attr("transform", "scale(" + k + ")")
+          .attr("opacity", 0)
+          
+        ;
+  }    
+    //var totalValue = d3.select('#slider3').value();
+     
+      //finish zoom.........................................
   });
   
   });
@@ -458,8 +504,7 @@ var endYear = ('1980');
 var intervals = 10; //maybe by decade
 var ticks = 5;
 
-d3.select('#slider3').call(d3.slider() 
-                           .value(1890)
+d3.select('#slider3').call(d3.slider().value(1890)
   .axis(d3.svg.axis().orient("bottom").ticks(14).tickFormat(d3.format("d"))).min(startYear).max(endYear).step(intervals)
   
   .on("slide", function(evt, value) { 
