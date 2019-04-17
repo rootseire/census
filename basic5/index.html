@@ -224,16 +224,16 @@ svg = d3.select("#canvas-svg").append("svg")
             
             var map_width = $('.states-choropleth')[0].getBoundingClientRect().width;
             
-            if (d3.event.layerX < map_width / 2) {
-              d3.select("#tooltip-container")
+            //if (d3.event.layerX < map_width / 2) {
+              d3.select("#tooltip-container") 
                 .style("top", (d3.event.layerY + 15) + "px")
                 .style("left", (d3.event.layerX + 15) + "px");
-            } else {
-              var tooltip_width = $("#tooltip-container").width();
-              d3.select("#tooltip-container")
-                .style("top", (d3.event.layerY + 15) + "px")
-                .style("left", (d3.event.layerX - tooltip_width - 30) + "px");
-            }
+            //} else {
+            //  var tooltip_width = $("#tooltip-container").width();
+             // d3.select("#tooltip-container")
+            //    .style("top", (d3.event.layerY + 15) + "px")
+            //    .style("left", (d3.event.layerX - tooltip_width - 30) + "px");
+           // }
         })
         .on("mouseout", function() {
                 $(this).attr("fill-opacity", "1.0");
