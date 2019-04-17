@@ -1,4 +1,10 @@
+body{background-color:#f5f5f5;}
 h1, h2{text-align:center;}
+ h1{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 66px;
+    padding: 20px;
+    }
 p{margin:0 auto;}
     .quotationBlock[data-v-ad5fa5ec]:after {
     content: close-quote;
@@ -9,6 +15,18 @@ p{margin:0 auto;}
     font-size: 60px;
     color: #141e30;
         
+}
+p[data-v-ad5fa5ec] {
+    font-family: Georgia;
+    background-color: #fff;
+    padding: 10px;
+    font-size: 18px;
+    line-height: 1.2;
+    width: 50%;
+    border-radius: 5px;
+    margin: 20px auto;
+    color: #000;
+    text-align: left;
 }
    .quotationBlock[data-v-ad5fa5ec]:after {
     content: close-quote;
@@ -137,7 +155,7 @@ div#explanation{
     font-size: 14px;
     margin:0 auto;
     width:800px;
-    height:600px;
+    height:auto;
     
 }
 
