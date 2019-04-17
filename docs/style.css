@@ -60,13 +60,13 @@ p[data-v-ad5fa5ec] {
     text-align: left;
 }
     .quotationBlock[data-v-ad5fa5ec] {
-        width:50%;
+        width:33%;
     color: #141e30;
     position: relative;
     quotes: "\201C" "\201D" "\2018" "\2019";
     }
     .quotationBlock{
-         width:50%;  
+         width:33%;  
         
     }
     .statement{
