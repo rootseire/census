@@ -141,6 +141,7 @@ div.tooltip{z-index:333;}
   /*margin: 20px 0 10px 150px;*/
     margin:0 auto;
   width: 700px;
+    margin-top:60px;
 }
     #canvas-svg{
         margin:0 auto;
