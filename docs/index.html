@@ -149,8 +149,7 @@ svg = d3.select("#canvas-svg").append("svg")
  div = d3.select("body")
 		    .append("div")   
     		.attr("class", "tooltip")               
-    		.style("opacity", 1)
-            .attr("left", "-9999");
+    		.style("opacity", 0);
   
   d3.tsv("https://s3-us-west-2.amazonaws.com/vida-public/geo/us-state-names.tsv", function(error, names) {
   
