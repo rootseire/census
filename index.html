@@ -171,7 +171,7 @@ svg = d3.select("#canvas-svg").append("svg")
     d3.max(data, function(d){ return +d[MAP_VALUE] })]);
   
   //d3.json("https://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(error, us) {
-  d3.json("https://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(error, us) {
+  d3.json("us.json", function(error, us) {
     svg.append("g")
         .attr("class", "states-choropleth")
       .selectAll("path")
