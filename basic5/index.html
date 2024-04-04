@@ -151,8 +151,9 @@ svg = d3.select("#canvas-svg").append("svg")
     		.attr("class", "tooltip")               
     		.style("opacity", 1);
   
-  d3.tsv("https://s3-us-west-2.amazonaws.com/vida-public/geo/us-state-names.tsv", function(error, names) {
-  
+  //d3.tsv("https://s3-us-west-2.amazonaws.com/vida-public/geo/us-state-names.tsv", function(error, names) {
+  d3.tsv("us-state-names.tsv", function(error, names) {
+
   name_id_map = {};
   id_name_map = {};
   
